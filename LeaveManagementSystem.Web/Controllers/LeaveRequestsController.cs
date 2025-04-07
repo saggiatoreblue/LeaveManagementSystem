@@ -1,7 +1,6 @@
 ﻿using LeaveManagementSystem.Web.Models.LeaveRequests;
 using LeaveManagementSystem.Web.Services.LeaveRequests;
 using LeaveManagementSystem.Web.Services.LeaveTypes;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace LeaveManagementSystem.Web.Controllers
@@ -61,7 +60,7 @@ namespace LeaveManagementSystem.Web.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        [Authorize(Policy ="AdminSupervisorOnly")]
+        [Authorize(Policy = "AdminSupervisorOnly")]
         public async Task<IActionResult> ListRequests()
         {
             var model = await _leaveRequestsService.AdminGetAllLeaveRequests();

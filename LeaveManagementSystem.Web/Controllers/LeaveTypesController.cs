@@ -1,15 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using LeaveManagementSystem.Web.Models.LeaveTypes;
-using LeaveManagementSystem.Web.Common;
+﻿using LeaveManagementSystem.Web.Models.LeaveTypes;
 using LeaveManagementSystem.Web.Services.LeaveTypes;
+using Microsoft.EntityFrameworkCore;
 
 namespace LeaveManagementSystem.Web.Controllers
 {
     [Authorize(Roles = Roles.Administrator)]
     public class LeaveTypesController(ILeaveTypesService leaveTypesService) : Controller
     {
- 
+
         private const string NameExistsValidationMessage = "This leave type already exists in the database.";
 
 
@@ -48,7 +46,8 @@ namespace LeaveManagementSystem.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(LeaveTypeCreateVM leaveTypeCreate)
         {
-            if (await leaveTypesService.CheckIfLeaveTypeNameExistsAsync(leaveTypeCreate.Name)) {
+            if (await leaveTypesService.CheckIfLeaveTypeNameExistsAsync(leaveTypeCreate.Name))
+            {
                 ModelState.AddModelError(nameof(leaveTypeCreate.Name), NameExistsValidationMessage);
             }
 
@@ -60,7 +59,7 @@ namespace LeaveManagementSystem.Web.Controllers
             return View(leaveTypeCreate);
         }
 
-      
+
 
         // GET: LeaveTypes/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -78,7 +77,7 @@ namespace LeaveManagementSystem.Web.Controllers
         }
 
         // POST: LeaveTypes/Edit/5
-  
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, LeaveTypeEditVM leaveTypeEdit)
@@ -116,7 +115,7 @@ namespace LeaveManagementSystem.Web.Controllers
             return View(leaveTypeEdit);
         }
 
-    
+
         // GET: LeaveTypes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -130,7 +129,7 @@ namespace LeaveManagementSystem.Web.Controllers
             {
                 return NotFound();
             }
-   
+
             return View(leaveType);
         }
 

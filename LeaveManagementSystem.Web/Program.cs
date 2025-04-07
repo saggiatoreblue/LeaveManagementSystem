@@ -1,5 +1,5 @@
-using LeaveManagementSystem.Web.Common;
-using LeaveManagementSystem.Web.Data;
+using LeaveManagementSystem.Common.Static;
+using LeaveManagementSystem.Data;
 using LeaveManagementSystem.Web.MappingProfiles;
 using LeaveManagementSystem.Web.Services.Email;
 using LeaveManagementSystem.Web.Services.LeaveAllocations;
